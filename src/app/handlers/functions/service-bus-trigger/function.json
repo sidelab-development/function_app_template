@@ -5,7 +5,7 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "name": "serviceBusTriggerQueueTrigger",
-      "queueName": "sbq-service-bus-trigger-dev-eastus",
+      "queueName": "SERVICEBUS_QUEUE_NAME",
       "connection": "SERVICEBUS_CONNECTION_STRING",
       "accessRights": "manage"
     }

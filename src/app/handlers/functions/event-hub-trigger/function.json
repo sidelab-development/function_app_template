@@ -5,7 +5,7 @@
       "type": "eventHubTrigger",
       "direction": "in",
       "name": "eventHubMessages",
-      "eventHubName": "users",
+      "eventHubName": "EVENT_HUB_NAME",
       "consumerGroup": "$Default",
       "connection": "EVENT_HUB_CONNECTION_STRING"
     }
