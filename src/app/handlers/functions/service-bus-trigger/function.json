@@ -1,0 +1,14 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "name": "serviceBusTriggerQueueTrigger",
+      "queueName": "sbq-service-bus-trigger-dev-eastus",
+      "connection": "SERVICEBUS_CONNECTION_STRING",
+      "accessRights": "manage"
+    }
+  ],
+  "scriptFile": "../.webpack/src/app/handlers/functions/service-bus-trigger.js"
+}

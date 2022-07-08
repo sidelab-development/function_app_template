@@ -1,0 +1,13 @@
+{
+  "include": [
+    "src/app/business",
+    "src/app/handlers/middlewares"
+  ],
+  "exclude": [
+    "src/app/services",
+    "src/app/providers",
+    "src/__tests__",
+    "src/app/repositories",
+    "src/app/validation"
+  ]
+}

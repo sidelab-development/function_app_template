@@ -1,0 +1,24 @@
+# Dependency directories
+node_modules
+
+# Test coverage directory
+coverage
+.nyc_output
+
+# Serverless
+.webpack
+.serverless
+local.settings.json
+
+# environment variables
+.env
+
+# compiled files
+.build
+.zip
+
+# Cache
+.eslintcache
+
+# yarn error
+yarn-error.log
