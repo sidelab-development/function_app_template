@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-./node_modules/.bin/serverless package; yarn check:coverage
+yarn package; yarn check:coverage
