@@ -3,10 +3,11 @@ const {
 } = require('fs');
 const { copySync } = require('fs-extra');
 const path = require('path');
+const dash = require('dashargs');
 
 const getAbsolutePath = (__path) => path.join(process.cwd(), __path);
 
-const pathExists = (path) => { existsSync(path); };
+const pathExists = (path) => existsSync(path);
 
 const getDirectories = (source, excludeDirs) => readdirSync(source, { withFileTypes: true })
   .filter((dirent) => dirent.isDirectory())
@@ -43,6 +44,18 @@ const writeFileSync = (filePath, data) => {
   });
 };
 
+const readAndParseArguments = (args) => {
+  let command = '';
+  args.forEach((arg) => {
+    if (!arg.includes('-')) command += `'${arg}'`;
+    else command += arg;
+    command += ' ';
+  });
+
+  const parsed = dash.parse(command);
+  return parsed;
+};
+
 module.exports = {
   getAbsolutePath,
   pathExists,
@@ -52,4 +65,5 @@ module.exports = {
   copyDirectorySync,
   copyFileSync,
   writeFileSync,
+  readAndParseArguments,
 };
