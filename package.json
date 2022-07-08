@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "webpack",
-    "prestart": "yarn build",
+    "prestart": "yarn clear; yarn build",
     "start": "node ./scripts/javascript/gen-function-dirs.js && func start",
     "test": "jest",
     "refresh": "rm -rf node_modules; yarn",

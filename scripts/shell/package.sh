@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Colors
+BLACK_BOLD="\033[1;30m";
+WHITE="\033[0;37m";
+WHITE_BOLD="\033[1;37m";
+GREEN="\033[0;32m";
+GREEN_BOLD="\033[1;32m";
+RESET="\033[0m";
+
+# Zip directory to organize files before packing
 ZIP_DIRECTORY=.zip
 
 # Generate bundle files
@@ -14,20 +23,16 @@ rm ${ZIP_DIRECTORY}/package.json ${ZIP_DIRECTORY}/yarn.lock;
 
 # Generate zip file
 cd ${ZIP_DIRECTORY};
-PROJECT_NAME=$(node -p "require('../package.json').name")
-zip -r ../${PROJECT_NAME}.zip .;
+PROJECT_NAME=$(node -p "require('../package.json').name");
+
+echo -e "${WHITE_BOLD}Packing...${RESET}"
+zip -q -r ../${PROJECT_NAME}.zip .;
 
 # Delete zip folder
 cd ..;
 rm -rf ${ZIP_DIRECTORY};
 
 
-BLACK_BOLD="\033[1;30m";
-WHITE="\033[0;37m";
-WHITE_BOLD="\033[1;37m";
-GREEN="\033[0;32m";
-GREEN_BOLD="\033[1;32m";
-RESET="\033[0m";
 
 echo -e "\n${GREEN}⠀⠀⠀⠀⣀⣤⡶⠞⠳⢶⣤⣀⠀⠀⠀⠀⠀
 ⣀⣤⡶⠟⠛${WHITE_BOLD}⠻⢦⣄⣀${GREEN}⠀⠈⠙⠳⢦⣤⣀⠀
