@@ -8,6 +8,8 @@ const {
   SERVICE_BUS_TRIGGERS,
   TRIGGERS,
   ALLOWED_METHODS,
+  COLORS,
+  FUNCTION_APP_LOGO,
 } = require('./constants');
 
 const {
@@ -26,7 +28,8 @@ const readName = () => {
   const __n = parsed.get('n');
 
   if (!__name && !__n) {
-    throw new Error('Provide a name');
+    console.error('Provide a name!');
+    process.exit(1);
   }
 
   const name = __name || __n;
@@ -38,13 +41,15 @@ const readMethod = () => {
   const __m = parsed.get('m');
 
   if (!__method && !__m) {
-    throw new Error('Provide a method');
+    console.error('Provide a method!');
+    process.exit(1);
   }
 
   const method = __method || __m;
 
   if (!ALLOWED_METHODS.includes(method.toLowerCase())) {
-    throw new Error('Provide a valid method');
+    console.error('Provide a valid method!');
+    process.exit(1);
   }
   return method;
 };
@@ -54,7 +59,8 @@ const readTrigger = () => {
   const __t = parsed.get('t');
 
   if (!__trigger && !__t) {
-    throw new Error('Provide a trigger');
+    console.error('Provide a trigger!');
+    process.exit(1);
   }
 
   const trigger = __trigger || __t;
@@ -65,7 +71,8 @@ const readTrigger = () => {
 
   if (SERVICE_BUS_TRIGGERS.includes(trigger.toLowerCase())) return TRIGGERS.SERVICEBUS;
 
-  throw new Error('Provide a valid trigger');
+  console.error('Provide a valid trigger!');
+  return process.exit(1);
 };
 
 const generateFunctionJSON = (name, method, trigger) => {
@@ -77,13 +84,15 @@ const generateFunctionJSON = (name, method, trigger) => {
 
   if (trigger === TRIGGERS.SERVICEBUS) return FUNCTION_JSON_TEMPLATES.servicebus(name, cleanedName);
 
-  throw new Error('Provide a valid trigger');
+  console.error('Provide a valid trigger!');
+  return process.exit(1);
 };
 
 const createFunctionDirectory = (name) => {
   const functionDirectoryPath = getAbsolutePath(`${HANDLERS_DIR}/${name}`);
   if (pathExists(functionDirectoryPath)) {
-    throw new Error('Function already exists');
+    console.error('Function already exists!');
+    process.exit(1);
   } else createDirectory(functionDirectoryPath);
 };
 
@@ -98,10 +107,22 @@ const addIndexFile = (name) => {
   writeFileSync(indexTSPath, TEMPLATE_HANDLER_INDEX);
 };
 
+const showLog = (name, method, trigger) => {
+  console.log(FUNCTION_APP_LOGO);
+  console.log(`${COLORS.BLACK}Name:${COLORS.RESET} ${name}`);
+  if (trigger === TRIGGERS.HTTP) console.log(`${COLORS.BLACK}Method:${COLORS.RESET} ${method.toUpperCase()}`);
+  console.log(`${COLORS.BLACK}Trigger:${COLORS.RESET} ${trigger}`);
+  console.log(`${COLORS.GREEN}Function created!${COLORS.RESET}`);
+};
+
 const name = readName();
-const method = readMethod();
 const trigger = readTrigger();
+let method;
+if (trigger === TRIGGERS.HTTP) {
+  method = readMethod();
+}
 
 createFunctionDirectory(name);
 addFunctionJSONFile(name, method, trigger);
 addIndexFile(name);
+showLog(name, method, trigger);

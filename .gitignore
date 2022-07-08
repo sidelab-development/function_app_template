@@ -15,6 +15,7 @@ local.settings.json
 
 # compiled files
 .build
+*.zip
 .zip
 
 # Cache

@@ -117,7 +117,9 @@
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-require-imports": "off",
         "import/no-extraneous-dependencies": "off",
-        "global-require": "off"
+        "no-octal-escape": "off",
+        "global-require": "off",
+        "no-console": "off"
       }
     },
     {

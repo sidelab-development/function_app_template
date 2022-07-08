@@ -19,7 +19,11 @@
     "postinstall": "node_modules/.bin/husky install",
     "package": "chmod +x ./scripts/shell/package.sh; ./scripts/shell/package.sh",
     "clear": "node ./scripts/javascript/delete-function-dirs.js",
-    "new:function": "node ./scripts/javascript/create-new-function.js"
+    "new:function": "node ./scripts/javascript/create-new-function.js",
+    "new:function:http": "node ./scripts/javascript/create-new-function.js -trigger h",
+    "new:function:servicebus": "node ./scripts/javascript/create-new-function.js -trigger sb",
+    "new:function:eventhub": "node ./scripts/javascript/create-new-function.js -trigger eh",
+    "check:functionDirs": "node ./scripts/javascript/check-function-dirs-exists.js"
   },
   "lint-staged": {
     "*.ts": "yarn lint --cache --fix"

@@ -81,6 +81,21 @@ const SERVICE_BUS_TRIGGERS = ['sb', 'servicebus', 'service_bus'];
 
 const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete'];
 
+const COLORS = {
+  BLACK: '\033[1;30m',
+  WHITE: '\033[1;37m',
+  GREEN: '\033[1;32m',
+  RESET: '\033[0m',
+  YELLOW: '\033[0;33m',
+  BLUE: '\033[1;34m',
+  SPACE: (num) => ' '.repeat(num),
+};
+
+const FUNCTION_APP_LOGO = `${COLORS.SPACE(5)}${COLORS.YELLOW}⠀⠀⠀⣴⡶⠂⠀
+${COLORS.SPACE(5)}${COLORS.BLUE}⣠⠟${COLORS.YELLOW}⣼⣟⣁${COLORS.BLUE}⡻⣄
+${COLORS.SPACE(5)}⠙⢮${COLORS.YELLOW}⢉⡿⠋${COLORS.BLUE}⣴⠋${COLORS.YELLOW}
+${COLORS.SPACE(5)}⠀⠀⠞⠁⠀⠀⠀${COLORS.RESET}`;
+
 module.exports = {
   HANDLERS_DIR,
   HANDLERS_ABSOLUTE_PATH,
@@ -92,4 +107,6 @@ module.exports = {
   SERVICE_BUS_TRIGGERS,
   TRIGGERS,
   ALLOWED_METHODS,
+  COLORS,
+  FUNCTION_APP_LOGO,
 };
