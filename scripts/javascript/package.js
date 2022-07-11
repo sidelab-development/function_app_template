@@ -10,7 +10,7 @@ const {
 } = require('./utils');
 
 const { HANDLERS_ABSOLUTE_PATH, EXCLUDE_DIRS, HANDLERS_DIR } = require('./constants');
-const { generateFunctionsDirectories } = require('./gen-function-dirs');
+const { generateFunctionsDirectories } = require('./start');
 
 const ZIP_DIR = '.zip';
 

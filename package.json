@@ -10,7 +10,7 @@
   "scripts": {
     "build": "webpack",
     "prestart": "yarn clear; yarn build",
-    "start": "node ./scripts/javascript/gen-function-dirs.js && func start",
+    "start": "node ./scripts/javascript/start.js && func start",
     "test": "jest",
     "refresh": "rm -rf node_modules; yarn",
     "lint": "./node_modules/.bin/eslint --fix \"./**/*.ts\" --max-warnings=0",
@@ -18,12 +18,12 @@
     "find-deadcode": "yarn ts-prune -p tsconfig.lint.json -e",
     "postinstall": "node_modules/.bin/husky install",
     "package": "chmod +x ./scripts/shell/package.sh; ./scripts/shell/package.sh",
-    "clear": "node ./scripts/javascript/delete-function-dirs.js",
-    "new:function": "node ./scripts/javascript/create-new-function.js",
-    "new:function:http": "node ./scripts/javascript/create-new-function.js -trigger h",
-    "new:function:servicebus": "node ./scripts/javascript/create-new-function.js -trigger sb",
-    "new:function:eventhub": "node ./scripts/javascript/create-new-function.js -trigger eh",
-    "check:functionDirs": "node ./scripts/javascript/check-function-dirs-exists.js"
+    "clear": "node ./scripts/javascript/clear.js",
+    "new:function": "node ./scripts/javascript/new-function.js",
+    "new:function:http": "node ./scripts/javascript/new-function.js -trigger h",
+    "new:function:servicebus": "node ./scripts/javascript/new-function.js -trigger sb",
+    "new:function:eventhub": "node ./scripts/javascript/new-function.js -trigger eh",
+    "check:functionDirs": "node ./scripts/javascript/check-function-dirs.js"
   },
   "lint-staged": {
     "*.ts": "yarn lint --cache --fix"

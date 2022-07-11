@@ -15,7 +15,7 @@ ZIP_DIRECTORY=.zip
 yarn webpack;
 
 # Move files and organize folders to zip
-node ./scripts/javascript/gen-folder-to-zip.js;
+node ./scripts/javascript/package.js;
 
 # Install necessary dependencies, then remove package.json and yarn.lock
 yarn --cwd ${ZIP_DIRECTORY};
