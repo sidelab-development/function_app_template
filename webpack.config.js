@@ -1,14 +1,14 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const functions = require('./scripts/javascript/function-entries.js')
-const GeneratePackageJsonPlugin = require('generate-package-json-webpack-plugin')
+const GeneratePackageJsonPlugin = require('generate-package-json-webpack-plugin');
+const functions = require('./scripts/javascript/webpack-entries.js');
 
 const basePackage = {
-  "name": "datacoin_backend",
-  "version": "1.0.0",
-  "description": "Sidelab - Datacoin V2",
-}
+  name: 'datacoin_backend',
+  version: '1.0.0',
+  description: 'Sidelab - Datacoin V2',
+};
 
 module.exports = {
   devtool: 'inline-cheap-module-source-map',
