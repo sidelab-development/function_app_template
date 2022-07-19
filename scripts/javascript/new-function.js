@@ -75,10 +75,22 @@ const readTrigger = () => {
   return process.exit(1);
 };
 
-const generateFunctionJSON = (name, method, trigger) => {
+const readRoute = () => {
+  const __name = parsed.get('route');
+  const __n = parsed.get('r');
+
+  if (!__name && !__n) {
+    return null;
+  }
+
+  const name = __name || __n;
+  return name.replace(/ /g, '-');
+};
+
+const generateFunctionJSON = (name, method, trigger, route) => {
   const cleanedName = name.replace(/-/g, '').replace(/_/g, '');
 
-  if (trigger === TRIGGERS.HTTP) return FUNCTION_JSON_TEMPLATES.http(name, method, cleanedName);
+  if (trigger === TRIGGERS.HTTP) return FUNCTION_JSON_TEMPLATES.http(name, method, route);
 
   if (trigger === TRIGGERS.EVENTHUB) return FUNCTION_JSON_TEMPLATES.eventhub(name, cleanedName);
 
@@ -96,9 +108,9 @@ const createFunctionDirectory = (name) => {
   } else createDirectory(functionDirectoryPath);
 };
 
-const addFunctionJSONFile = (name, method, trigger) => {
+const addFunctionJSONFile = (name, method, trigger, route) => {
   const functionJSONPath = getAbsolutePath(`${HANDLERS_DIR}/${name}/function.json`);
-  const functionJSON = generateFunctionJSON(name, method, trigger);
+  const functionJSON = generateFunctionJSON(name, method, trigger, route);
   writeFileSync(functionJSONPath, functionJSON);
 };
 
@@ -118,11 +130,16 @@ const showLog = (name, method, trigger) => {
 const name = readName();
 const trigger = readTrigger();
 let method;
+let route;
 if (trigger === TRIGGERS.HTTP) {
   method = readMethod();
+  route = readRoute();
+  if (route === null) {
+    route = name;
+  }
 }
 
 createFunctionDirectory(name);
-addFunctionJSONFile(name, method, trigger);
+addFunctionJSONFile(name, method, trigger, route);
 addIndexFile(name);
 showLog(name, method, trigger);
