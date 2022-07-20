@@ -47,9 +47,9 @@ const FUNCTION_JSON_TEMPLATES = {
       "type": "eventHubTrigger",
       "direction": "in",
       "name": "${cleanedName}eventHubMessages",
-      "eventHubName": "EVENT_HUB_NAME",
+      "eventHubName": "${cleanedName.toUpperCase()}_EVENT_HUB_NAME",
       "consumerGroup": "$Default",
-      "connection": "EVENT_HUB_CONNECTION_STRING"
+      "connection": "${cleanedName.toUpperCase()}_EVENT_HUB_CONNECTION_STRING"
     }
   ],
   "scriptFile": "../.webpack/src/app/handlers/functions/${name}.js"
@@ -61,8 +61,8 @@ const FUNCTION_JSON_TEMPLATES = {
       "type": "serviceBusTrigger",
       "direction": "in",
       "name": "${cleanedName}QueueTrigger",
-      "queueName": "SERVICEBUS_QUEUE_NAME",
-      "connection": "SERVICEBUS_CONNECTION_STRING",
+      "queueName": "${cleanedName.toUpperCase()}_SERVICEBUS_QUEUE_NAME",
+      "connection": "${cleanedName.toUpperCase()}_SERVICEBUS_CONNECTION_STRING",
       "accessRights": "manage"
     }
   ],

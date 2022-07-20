@@ -20,9 +20,9 @@
     "package": "chmod +x ./scripts/shell/package.sh; ./scripts/shell/package.sh",
     "clear": "node ./scripts/javascript/clear.js",
     "new:function": "node ./scripts/javascript/new-function.js",
-    "new:function:http": "node ./scripts/javascript/new-function.js -trigger h",
-    "new:function:servicebus": "node ./scripts/javascript/new-function.js -trigger sb",
-    "new:function:eventhub": "node ./scripts/javascript/new-function.js -trigger eh",
+    "new:function:http": "yarn new:function -trigger h",
+    "new:function:servicebus": "yarn new:function -trigger sb",
+    "new:function:eventhub": "yarn new:function -trigger eh",
     "check:functionDirs": "node ./scripts/javascript/check-function-dirs.js"
   },
   "lint-staged": {
