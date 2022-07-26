@@ -12,34 +12,44 @@ RESET="\033[0m";
 ZIP_DIRECTORY=.zip
 
 # ====== Generate bundle files ======
-yarn webpack;
+echo -e "${GREEN_BOLD}> Building with webpack${RESET}";
+if ! yarn webpack; then
+  rm -rf ${ZIP_DIRECTORY}; exit 1;
+fi
 
 # ====== Move files and organize folders to zip ======
-node ./scripts/javascript/package.js;
+echo -e "${GREEN_BOLD}> Organizing build directory${RESET}";
+if ! node ./scripts/javascript/package.js; then
+  rm -rf ${ZIP_DIRECTORY}; exit 1;
+fi
 
 # ====== Install necessary dependencies, then remove package.json and yarn.lock ======
-yarn --cwd ${ZIP_DIRECTORY};
+echo -e "${GREEN_BOLD}> Installing build dependencies${RESET}";
+if ! yarn --cwd ${ZIP_DIRECTORY}; then
+  rm -rf ${ZIP_DIRECTORY}; exit 1;
+fi
 
 # ====== If the project use prisma, uncomment the lines below ======
-# cp "./schema.prisma" "${ZIP_DIRECTORY}/schema.prisma";
+# echo -e "${GREEN_BOLD}> Configuring prisma${RESET}";
+
+# if ! cp "./schema.prisma" "${ZIP_DIRECTORY}/schema.prisma"; then
+#   rm -rf ${ZIP_DIRECTORY}; exit 1;
+# fi
 
 # echo \
 # "DATABASE_URL=''
 # SHADOW_DATABASE_URL=''" >> "${ZIP_DIRECTORY}/.env";
 
-# yarn --cwd ${ZIP_DIRECTORY} add -D prisma@^3.15.2
-# yarn --cwd ${ZIP_DIRECTORY} prisma generate
+# if ! yarn --cwd ${ZIP_DIRECTORY} add -D prisma@^3.15.2; then
+#   rm -rf ${ZIP_DIRECTORY}; exit 1;
+# fi
 
-# ====== Generate zip file ======
-cd ${ZIP_DIRECTORY};
-echo -e "${WHITE_BOLD}Packing...${RESET}"
-zip -q -r ../api.zip .;
+# if ! yarn --cwd ${ZIP_DIRECTORY} prisma generate; then
+#   rm -rf ${ZIP_DIRECTORY}; exit 1;
+# fi
 
-# ====== Delete zip folder ======
-cd ..;
-rm -rf ${ZIP_DIRECTORY};
-
-
+# ====== Output ======
+echo -e "${GREEN_BOLD}> Done!${RESET}";
 
 echo -e "\n${GREEN}⠀⠀⠀⠀⣀⣤⡶⠞⠳⢶⣤⣀⠀⠀⠀⠀⠀
 ⣀⣤⡶⠟⠛${WHITE_BOLD}⠻⢦⣄⣀${GREEN}⠀⠈⠙⠳⢦⣤⣀⠀
@@ -51,5 +61,5 @@ echo -e "\n${GREEN}⠀⠀⠀⠀⣀⣤⡶⠞⠳⢶⣤⣀⠀⠀⠀⠀⠀
 ⠉⠛⠷⣦⣄⡀⠀⢸⡇⠀⢀⣠⡴⠞⠛⠉⠀
 ⠀⠀⠀⠀⠉⠛⠳⢾⡷⠞⠛⠉⠀⠀⠀⠀⠀${RESET}\n"
 
-echo -e "${GREEN_BOLD}Package complete!${RESET}";
-echo -e "${BLACK_BOLD}File:${WHITE} api.zip${RESET}";
+echo -e "${GREEN_BOLD}Build complete!${RESET}";
+echo -e "${BLACK_BOLD}Folder:${WHITE} .zip${RESET}";
