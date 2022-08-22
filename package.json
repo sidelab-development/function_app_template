@@ -18,6 +18,7 @@
     "find-deadcode": "yarn ts-prune -p tsconfig.lint.json -e",
     "postinstall": "node_modules/.bin/husky install",
     "package": "chmod +x ./scripts/shell/package.sh; ./scripts/shell/package.sh",
+    "config:prisma": "chmod +x ./scripts/shell/prisma.sh; ./scripts/shell/prisma.sh",
     "clear": "node ./scripts/javascript/clear.js",
     "new:function": "node ./scripts/javascript/new-function.js",
     "new:function:http": "yarn new:function -trigger h",
