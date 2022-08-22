@@ -29,25 +29,6 @@ if ! yarn --cwd ${ZIP_DIRECTORY}; then
   rm -rf ${ZIP_DIRECTORY}; exit 1;
 fi
 
-# ====== If the project use prisma, uncomment the lines below ======
-# echo -e "${GREEN_BOLD}> Configuring prisma${RESET}";
-
-# if ! cp "./schema.prisma" "${ZIP_DIRECTORY}/schema.prisma"; then
-#   rm -rf ${ZIP_DIRECTORY}; exit 1;
-# fi
-
-# echo \
-# "DATABASE_URL=''
-# SHADOW_DATABASE_URL=''" >> "${ZIP_DIRECTORY}/.env";
-
-# if ! yarn --cwd ${ZIP_DIRECTORY} add -D prisma@^3.15.2; then
-#   rm -rf ${ZIP_DIRECTORY}; exit 1;
-# fi
-
-# if ! yarn --cwd ${ZIP_DIRECTORY} prisma generate; then
-#   rm -rf ${ZIP_DIRECTORY}; exit 1;
-# fi
-
 # ====== Output ======
 echo -e "${GREEN_BOLD}> Done!${RESET}";
 
