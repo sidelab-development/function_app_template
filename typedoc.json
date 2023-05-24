@@ -1,9 +1,0 @@
-{
-  "entryPoints": ["./src"],
-  "exclude": [
-    "**/node_modules/**",
-    "**/__tests__/**",
-    "**/*+(.spec|.test|.d).ts"
- ],
- "out": "docs/project"
-}

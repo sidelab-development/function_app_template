@@ -1,25 +1,52 @@
-# Dependency directories
-node_modules
+bin
+obj
+csx
+.vs
+edge
+Publish
 
-# Test coverage directory
-coverage
-.nyc_output
+*.user
+*.suo
+*.cscfg
+*.Cache
+project.lock.json
 
-# Serverless
-.webpack
-.serverless
+/packages
+/TestResults
+
+/tools/NuGet.exe
+/App_Data
+/secrets
+/data
+.secrets
+appsettings.json
 local.settings.json
 
-# environment variables
+node_modules
+dist
+
+# Local python packages
+.python_packages/
+
+# Environments
 .env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# compiled files
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Azurite artifacts
+__blobstorage__
+__queuestorage__
+__azurite_db*__.json
+
+# Build
 .build
-*.zip
-.zip
-
-# Cache
-.eslintcache
-
-# yarn error
-yarn-error.log
+.dist
