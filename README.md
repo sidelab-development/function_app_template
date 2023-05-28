@@ -1,12 +1,12 @@
 todo
 
-[ ] tsprune
-[ ] vitest
-[ ] eslint
-[ ] husky/hooks
-[ ] build/tsup
-[ ] deploy
+[X] eslint
+[X] tsprune
+[X] vitest
+[X] husky/hooks
+[X] build/tsup
 [ ] hello world function
+[ ] deploy
 
 continue from here:
 https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-typescript?tabs=azure-cli%2Cbrowser&pivots=nodejs-model-v4#update-app-settings

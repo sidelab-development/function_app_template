@@ -3,27 +3,38 @@
   "version": "1.0.0",
   "description": "Sample description",
   "main": "dist/src/functions/*.js",
+  "license": "ISC",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "prestart": "build",
-    "postinstall": "node_modules/.bin/husky install",
+    "build": "tsup",
+    "prepare": "husky install",
+    "prestart": "tsup",
     "start": "func start",
-    "lint": "eslint",
-    "lint:fix": "eslint",
-    "prune": "ts-prune",
-    "test": "vitest"
+    "lint": "eslint src --ext .ts --max-warnings=0",
+    "lint:fix": "eslint src --ext .ts --fix --max-warnings=0",
+    "find-deadcode": "ts-prune",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "lint-staged": {
+    "*.ts": "yarn lint:fix"
   },
   "dependencies": {
     "@azure/functions": "^4.0.0-alpha.1"
   },
   "devDependencies": {
     "@types/node": "^20.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "@vitest/coverage-c8": "^0.31.1",
     "azure-functions-core-tools": "^4.x",
     "eslint": "^8.41.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
+    "lint-staged": "13.2.2",
     "ts-prune": "^0.10.3",
-    "typescript": "^5.0.4"
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.31.1"
   }
 }
