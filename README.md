@@ -1,19 +1,11 @@
-todo
-
 [X] eslint
 [X] tsprune
 [X] vitest
 [X] husky/hooks
 [X] build/tsup
-[ ] hello world function
+[X] hello world function
 [ ] deploy
-
-continue from here:
-https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-typescript?tabs=azure-cli%2Cbrowser&pivots=nodejs-model-v4#update-app-settings
-
-https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-node?tabs=typescript%2Cwindows-setting-the-node-version&pivots=nodejs-model-v4
-
-https://learn.microsoft.com/en-us/azure/azure-functions/functions-node-upgrade-v4?tabs=azure-cli-set-indexing-flag%2Cv4#enable-v4-programming-model
+-settings AzureWebJobsFeatureFlags=EnableWorkerIndexing
 
 prerequisites
 
