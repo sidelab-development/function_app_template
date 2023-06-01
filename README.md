@@ -7,6 +7,9 @@
 [ ] deploy
 -settings AzureWebJobsFeatureFlags=EnableWorkerIndexing
 
+Ajustar template de pipe para rodar o prettier, eslint, coverage (mudar script)
+CI - npx prettier --check .
+
 prerequisites
 
 - The [Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local#v2) version v4.0.5095 or above. Run `func --version` to check that the Azure Functions Core Tools are version v4.0.5095 or above.
@@ -19,3 +22,5 @@ prerequisites
 
 Add a function to your project by using the following command:
 func new
+
+- [ ] Create you own local.settings.json
